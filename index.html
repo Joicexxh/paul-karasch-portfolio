@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paul Karasch – Projektentwicklung, Projektkoordination und erneuerbare Energien. Erfahrung in Photovoltaik, Prozessoptimierung und Digitalisierung.">
+    <meta name="theme-color" content="#102c25">
+    <link rel="canonical" href="https://paulportifoliop.netlify.app/">
+    <title>Paul Karasch | Projektentwicklung & Erneuerbare Energien</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Aktiviert die Reveal-Animationen nur, wenn JavaScript läuft -->
+    <script>document.documentElement.classList.add("js");</script>
+
+    <style>
+        :root {
+            --green-dark: #102c25;
+            --green: #1e493b;
+            --green-light: #dce9df;
+            --gold: #c6a66b;
+            --cream: #f8f7f2;
+            --white: #ffffff;
+            --text: #26332d;
+            --muted: #6b746c;
+            --border: #e5e7df;
+
+            --font-heading: "Manrope", system-ui, sans-serif;
+            --font-body: "DM Sans", system-ui, sans-serif;
+
+            --container: 1180px;
+            --radius: 18px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body.menu-open { overflow: hidden; }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; }
+        img { display: block; max-width: 100%; }
+
+        ::selection { background: var(--gold); color: var(--green-dark); }
+
+        :focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .section { padding: 110px 0; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            font-weight: 700;
+            color: var(--green-dark);
+            max-width: 760px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+            margin-top: 20px;
+            font-size: 1.02rem;
+        }
+
+        .accent { color: var(--gold); }
+
+        /* Auf hellem Hintergrund ist Gold schlecht lesbar -> dunkleres Gold */
+        .section-heading .accent,
+        .about-content .accent,
+        .experience .accent {
+            color: #a8863f;
+        }
+        .skills .accent,
+        .contact-panel .accent,
+        .visual-card .accent {
+            color: var(--gold);
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(16, 44, 37, 0.07);
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* FIX: backdrop-filter auf dem .navbar selbst würde das mobile
+           Vollbild-Menü (position: fixed) auf die Höhe der Navbar begrenzen.
+           Darum liegt der Hintergrund auf einem Pseudo-Element. */
+        .navbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: rgba(248, 247, 242, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .navbar.scrolled { box-shadow: 0 8px 30px rgba(16, 44, 37, 0.08); }
+
+        .nav-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--green-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-mark {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--green-dark);
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .logo small {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: var(--muted);
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.87rem;
+            font-weight: 600;
+            color: #536057;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--green); }
+
+        .nav-links a.nav-cta {
+            display: inline-block;
+            padding: 12px 20px;
+            background: var(--green-dark);
+            color: var(--white);
+            border-radius: 8px;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-links a.nav-cta:hover {
+            background: var(--green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 10px;
+            color: var(--green-dark);
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 780px;
+            padding: 160px 0 90px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 90% 15%, rgba(198, 166, 107, 0.13), transparent 28%),
+                var(--cream);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid rgba(30, 73, 59, 0.08);
+            border-radius: 50%;
+            right: -140px;
+            bottom: -170px;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 26px;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background: #5b9a70;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px rgba(91, 154, 112, 0.13);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3.1rem, 6.5vw, 5.8rem);
+            line-height: 1.02;
+            letter-spacing: -4px;
+            color: var(--green-dark);
+            font-weight: 800;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 span { display: block; color: var(--green); }
+
+        .hero-description {
+            max-width: 580px;
+            color: #5c675f;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 23px;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: transform 0.25s ease, background 0.25s ease;
+            cursor: pointer;
+        }
+
+        .button:hover { transform: translateY(-3px); }
+
+        .button-primary { background: var(--green-dark); color: var(--white); }
+        .button-primary:hover { background: var(--green); }
+
+        .button-secondary {
+            color: var(--green-dark);
+            border: 1px solid #d8ddd4;
+            background: transparent;
+        }
+        .button-secondary:hover { background: var(--white); }
+
+        .hero-note {
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .hero-note span { color: var(--gold); font-size: 1.1rem; }
+
+        /* HERO VISUAL */
+
+        .hero-visual {
+            position: relative;
+            min-height: 450px;
+            display: grid;
+            place-items: center;
+        }
+
+        .visual-orbit {
+            position: absolute;
+            width: 370px;
+            height: 370px;
+            border: 1px solid rgba(30, 73, 59, 0.12);
+            border-radius: 50%;
+            animation: orbit 30s linear infinite;
+        }
+
+        .visual-orbit::before,
+        .visual-orbit::after {
+            content: "";
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .visual-orbit::before { top: 40px; left: 70px; }
+        .visual-orbit::after { right: 25px; bottom: 100px; background: var(--green); }
+
+        .visual-card {
+            position: relative;
+            width: min(100%, 360px);
+            min-height: 380px;
+            padding: 35px 35px 90px;
+            border-radius: 24px;
+            background: var(--green-dark);
+            color: var(--white);
+            box-shadow: 0 35px 80px rgba(16, 44, 37, 0.2);
+            overflow: hidden;
+        }
+
+        .visual-card::after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 1px solid rgba(198, 166, 107, 0.22);
+            border-radius: 50%;
+            right: -100px;
+            bottom: -90px;
+            pointer-events: none;
+        }
+
+        .visual-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .visual-card-label {
+            color: #b7c7bd;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .visual-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 13px;
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .visual-card h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+
+        .visual-card h2 .accent { display: block; }
+
+        .visual-card p {
+            color: #bdcbc2;
+            font-size: 0.9rem;
+            max-width: 240px;
+        }
+
+        .visual-card-bottom {
+            position: absolute;
+            left: 35px;
+            right: 35px;
+            bottom: 30px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: #cbd6cf;
+            font-size: 0.76rem;
+            z-index: 1;
+        }
+
+        .floating-tag {
+            position: absolute;
+            z-index: 2;
+            padding: 14px 18px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(16, 44, 37, 0.08);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .floating-tag span { color: var(--gold); margin-right: 7px; }
+
+        .tag-top { top: 45px; right: -10px; }
+        .tag-bottom { bottom: 35px; left: -20px; }
+
+        /* TRUST STRIP */
+
+        .trust-strip {
+            background: var(--white);
+            border-block: 1px solid var(--border);
+            padding: 28px 0;
+        }
+
+        .trust-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #536057;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .trust-icon {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .about-aside { position: sticky; top: 120px; }
+
+        .about-card {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 38px;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(198, 166, 107, 0.3);
+            border-radius: 50%;
+            right: -80px;
+            bottom: -70px;
+            pointer-events: none;
+        }
+
+        .about-card .quote-mark {
+            color: var(--gold);
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .about-card blockquote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.55;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-card small {
+            display: block;
+            margin-top: 24px;
+            color: #c1cec5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+
+        .about-content .section-heading { margin-bottom: 28px; }
+
+        .about-content > p {
+            color: #5c675f;
+            margin-bottom: 22px;
+            font-size: 1rem;
+        }
+
+        .about-content strong { color: var(--green-dark); }
+
+        .about-highlights {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .highlight-item {
+            padding: 20px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 12px;
+        }
+
+        .highlight-item h3 {
+            font-family: var(--font-heading);
+            color: var(--green-dark);
+            font-size: 0.95rem;
+            margin-bottom: 7px;
+        }
+
+        .highlight-item p { font-size: 0.85rem; color: var(--muted); }
+
+        /* EXPERIENCE */
+
+        .experience { background: var(--white); }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 40px;
+            margin-bottom: 65px;
+        }
+
+        .experience-header .section-description { max-width: 420px; margin-top: 0; }
+
+        .timeline {
+            position: relative;
+            max-width: 930px;
+            margin-left: 8px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 7px;
+            width: 1px;
+            background: #dce3dc;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 42px;
+            padding-bottom: 48px;
+        }
+
+        .timeline-item:last-child { padding-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            top: 7px;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .timeline-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-top h3 {
+            font-family: var(--font-heading);
+            color: var(--green-dark);
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company { color: var(--green); font-weight: 600; font-size: 0.9rem; }
+
+        .timeline-date {
+            flex-shrink: 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+            padding: 7px 12px;
+            border-radius: 7px;
+            background: var(--cream);
+        }
+
+        .timeline-item > p {
+            color: #5c675f;
+            font-size: 0.93rem;
+            margin-bottom: 16px;
+            max-width: 800px;
+        }
+
+        .timeline-list { list-style: none; display: grid; gap: 9px; }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 20px;
+            color: #55615a;
+            font-size: 0.9rem;
+        }
+
+        .timeline-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 55px;
+        }
+
+        .project-card {
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.62);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 50px rgba(16, 44, 37, 0.08);
+        }
+
+        .project-number {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #a8863f;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .project-icon {
+            width: 53px;
+            height: 53px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 1.5rem;
+            margin-bottom: 22px;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-heading);
+            color: var(--green-dark);
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 14px;
+        }
+
+        .project-card p { color: var(--muted); font-size: 0.9rem; }
+
+        .project-tag {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 7px 11px;
+            background: #f0eee6;
+            border-radius: 6px;
+            color: #55615a;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            background: var(--green-dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(198, 166, 107, 0.12);
+            border-radius: 50%;
+            top: -250px;
+            right: -150px;
+            pointer-events: none;
+        }
+
+        .skills .section-label { color: var(--gold); }
+        .skills .section-heading { color: var(--white); }
+        .skills .section-description { color: #b5c4ba; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 55px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-group {
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            background: rgba(255, 255, 255, 0.035);
+            border-radius: var(--radius);
+        }
+
+        .skill-group h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        .skill-tag {
+            padding: 9px 13px;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: #dce6df;
+            font-size: 0.81rem;
+        }
+
+        /* LANGUAGES */
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 45px;
+        }
+
+        .language-card {
+            padding: 25px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .language-card h3 {
+            color: var(--green-dark);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .language-card p { color: var(--muted); font-size: 0.85rem; }
+
+        .language-level {
+            margin-top: 20px;
+            height: 4px;
+            border-radius: 4px;
+            background: #e9ece6;
+            overflow: hidden;
+        }
+
+        .language-level span {
+            display: block;
+            height: 100%;
+            background: var(--gold);
+            border-radius: inherit;
+        }
+
+        /* EDUCATION */
+
+        .education { background: #eeefe8; }
+
+        .education-card {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            align-items: center;
+            gap: 30px;
+            padding: 35px;
+            background: var(--white);
+            border: 1px solid #e4e6dd;
+            border-radius: var(--radius);
+            margin-top: 40px;
+        }
+
+        .education-icon {
+            width: 80px;
+            height: 80px;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            background: var(--green-dark);
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .education-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+
+        .education-card p { color: var(--muted); font-size: 0.92rem; }
+        .education-card p + p { margin-top: 6px; }
+
+        .education-date {
+            align-self: start;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 8px 12px;
+            border-radius: 7px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* CONTACT */
+
+        .contact { background: var(--white); }
+
+        .contact-panel {
+            position: relative;
+            overflow: hidden;
+            padding: 70px;
+            background: var(--green-dark);
+            border-radius: 25px;
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-panel::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(198, 166, 107, 0.18);
+            border-radius: 50%;
+            right: -170px;
+            top: -220px;
+            pointer-events: none;
+        }
+
+        .contact-panel .section-label { color: var(--gold); }
+
+        .contact-panel h2 {
+            position: relative;
+            font-family: var(--font-heading);
+            font-size: clamp(2.1rem, 4vw, 3.5rem);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin-bottom: 22px;
+        }
+
+        .contact-panel .contact-intro {
+            position: relative;
+            color: #bdcbc2;
+            max-width: 480px;
+        }
+
+        .contact-details { position: relative; display: grid; gap: 16px; }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 17px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            transition: background 0.25s ease;
+        }
+
+        a.contact-link:hover { background: rgba(255, 255, 255, 0.07); }
+
+        .contact-link-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--gold);
+            border-radius: 11px;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .contact-link small {
+            display: block;
+            color: #aebdb3;
+            font-size: 0.72rem;
+            margin-bottom: 3px;
+        }
+
+        .contact-link strong {
+            font-size: 0.9rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        /* FOOTER */
+
+        .footer { padding: 30px 0; background: var(--cream); }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer p { color: var(--muted); font-size: 0.8rem; }
+
+        .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover { color: var(--green); }
+
+        /* SCROLL PROGRESS */
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gold);
+            z-index: 2000;
+        }
+
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 13px;
+            background: var(--green-dark);
+            color: var(--white);
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(16, 44, 37, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background 0.25s ease;
+            z-index: 900;
+        }
+
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--green); }
+
+        /* ANIMATIONS
+           Nur aktiv, wenn JS läuft (.js) – sonst bleibt der Inhalt sichtbar. */
+
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .hero-grid { gap: 35px; }
+            .hero h1 { letter-spacing: -2.5px; }
+            .about-grid { gap: 45px; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .languages-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-panel { padding: 50px; gap: 35px; }
+            .nav-links { gap: 20px; }
+        }
+
+        @media (max-width: 760px) {
+            .container { width: min(100% - 36px, var(--container)); }
+            .section { padding: 78px 0; }
+            .nav-inner { min-height: 72px; }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+                position: relative;
+                z-index: 1002;
+            }
+
+            .nav-links {
+                position: fixed;
+                inset: 0;
+                z-index: 1001;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                background: var(--cream);
+                transform: translateX(100%);
+                visibility: hidden;
+                transition: transform 0.35s ease, visibility 0.35s ease;
+            }
+
+            .nav-links.open { transform: translateX(0); visibility: visible; }
+
+            .nav-links a { font-size: 1.2rem; }
+            .nav-cta { margin-top: 5px; }
+
+            .hero { min-height: auto; padding: 125px 0 75px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: clamp(3rem, 12vw, 4.8rem); }
+            .hero-description { font-size: 1rem; }
+
+            .hero-visual {
+                min-height: 410px;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 430px;
+            }
+
+            .visual-orbit { width: 320px; height: 320px; }
+            .visual-card { width: min(100%, 330px); min-height: 350px; padding: 28px 28px 90px; }
+            .visual-card-bottom { left: 28px; right: 28px; }
+
+            .tag-top { right: 0; }
+            .tag-bottom { left: 0; }
+
+            .trust-inner { display: grid; grid-template-columns: 1fr 1fr; }
+            .trust-item { font-size: 0.78rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 35px; }
+            .about-aside { position: static; }
+
+            .experience-header { display: block; margin-bottom: 45px; }
+            .experience-header .section-description { margin-top: 18px; }
+
+            .timeline-top { display: block; }
+            .timeline-date { display: inline-block; margin-top: 12px; }
+
+            .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+            .project-card { padding: 27px; }
+
+            .skills-grid { grid-template-columns: 1fr; }
+
+            .education-card { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+            .education-icon { width: 65px; height: 65px; }
+            .education-date { justify-self: start; grid-row: 2; }
+
+            .contact-panel { grid-template-columns: 1fr; padding: 38px 25px; gap: 35px; }
+
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-actions { align-items: stretch; flex-direction: column; }
+            .button { width: 100%; }
+            .hero-visual { min-height: 380px; }
+            .visual-orbit { width: 275px; height: 275px; }
+            .visual-card { min-height: 335px; }
+            .visual-card h2 { font-size: 1.85rem; }
+            .floating-tag { font-size: 0.72rem; padding: 11px 12px; }
+            .about-highlights { grid-template-columns: 1fr; }
+            .trust-inner { grid-template-columns: 1fr; }
+            .languages-grid { grid-template-columns: 1fr; }
+            .timeline-item { padding-left: 30px; }
+        }
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                transition-delay: 0s !important;
+            }
+
+            .js .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+
+            <a href="#start" class="logo" aria-label="Paul Karasch – Startseite">
+                <span class="logo-mark">PK</span>
+                <span>
+                    Paul Karasch
+                    <small>Projektentwicklung</small>
+                </span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" type="button"
+                    aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+                ☰
+            </button>
+
+            <nav aria-label="Hauptnavigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#erfahrung">Erfahrung</a></li>
+                    <li><a href="#kompetenzen">Kompetenzen</a></li>
+                    <li><a href="#ausbildung">Ausbildung</a></li>
+                    <li><a href="#kontakt" class="nav-cta">Kontakt aufnehmen ↗</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="start">
+            <div class="container hero-grid">
+
+                <div class="hero-content reveal">
+
+                    <div class="hero-eyebrow">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Halle (Saale) · Sachsen-Anhalt
+                    </div>
+
+                    <h1>
+                        Paul
+                        <span>Karasch.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Wirtschaftsingenieur mit Erfahrung in
+                        <strong>Projektkoordination, Photovoltaik und Digitalisierung.</strong>
+                        Ich verbinde strukturiertes Projektmanagement mit
+                        technischem Verständnis und dem Blick für effiziente Prozesse.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#erfahrung" class="button button-primary">
+                            Berufserfahrung entdecken <span aria-hidden="true">↘</span>
+                        </a>
+
+                        <a href="#kontakt" class="button button-secondary">
+                            Kontakt aufnehmen <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span aria-hidden="true">✦</span>
+                        Offen für neue Herausforderungen im Bereich erneuerbare Energien
+                    </div>
+
+                </div>
+
+                <div class="hero-visual reveal reveal-delay-2">
+
+                    <div class="visual-orbit" aria-hidden="true"></div>
+
+                    <div class="visual-card">
+
+                        <div class="visual-card-top">
+                            <span class="visual-card-label">Fokus &amp; Expertise</span>
+                            <span class="visual-icon" aria-hidden="true">↗</span>
+                        </div>
+
+                        <h2>
+                            Technik mit Leidenschaft.
+                            <span class="accent">Energie mit Zukunft.</span>
+                        </h2>
+
+                        <p>
+                            Projekte strukturieren, Prozesse verbessern
+                            und nachhaltige Lösungen voranbringen.
+                        </p>
+
+                        <div class="visual-card-bottom">
+                            <span>Projektmanagement</span>
+                            <span>Photovoltaik</span>
+                        </div>
+
+                    </div>
+
+                    <div class="floating-tag tag-top">
+                        <span aria-hidden="true">✦</span> Prozessoptimierung
+                    </div>
+
+                    <div class="floating-tag tag-bottom">
+                        <span aria-hidden="true">↗</span> Erneuerbare Energien
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TRUST STRIP -->
+        <section class="trust-strip" aria-label="Schwerpunkte">
+            <div class="container trust-inner">
+
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">☀</span>
+                    Photovoltaikprojekte
+                </div>
+
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">↗</span>
+                    Projektkoordination
+                </div>
+
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">⌘</span>
+                    Digitale Prozesse
+                </div>
+
+                <div class="trust-item">
+                    <span class="trust-icon" aria-hidden="true">◎</span>
+                    Interdisziplinäre Zusammenarbeit
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROFIL -->
+        <section class="section" id="profil">
+            <div class="container about-grid">
+
+                <aside class="about-aside reveal">
+
+                    <div class="section-label">Über mich</div>
+
+                    <div class="about-card">
+                        <div class="quote-mark" aria-hidden="true">“</div>
+
+                        <blockquote>
+                            Gute Projekte entstehen,
+                            wenn Menschen, Prozesse
+                            und Technik zusammenarbeiten.
+                        </blockquote>
+
+                        <small>Meine Arbeitsphilosophie</small>
+                    </div>
+
+                </aside>
+
+                <div class="about-content reveal reveal-delay-1">
+
+                    <h2 class="section-heading">
+                        Struktur schaffen.
+                        <span class="accent">Zukunft gestalten.</span>
+                    </h2>
+
+                    <p>
+                        Als Wirtschaftsingenieur verbinde ich wirtschaftliche
+                        Zusammenhänge mit technischem Verständnis und einer
+                        strukturierten Arbeitsweise.
+                    </p>
+
+                    <p>
+                        Meine berufliche Erfahrung umfasst die administrative
+                        Koordination von Photovoltaikprojekten, die Abstimmung
+                        mit externen Partnern, die Optimierung von Arbeitsabläufen
+                        sowie die Digitalisierung betrieblicher Prozesse.
+                    </p>
+
+                    <p>
+                        Dabei lege ich Wert auf <strong>klare Kommunikation,
+                        nachvollziehbare Dokumentation und zuverlässige
+                        Zusammenarbeit</strong> zwischen allen Beteiligten.
+                    </p>
+
+                    <p>
+                        Ich lebe in Halle (Saale) und möchte meine Erfahrung
+                        gezielt in die Entwicklung und Koordination nachhaltiger
+                        Energieprojekte einbringen. Auch für eine fachliche
+                        Weiterentwicklung im Bereich Freiflächen-Photovoltaik
+                        bin ich offen.
+                    </p>
+
+                    <div class="about-highlights">
+
+                        <article class="highlight-item">
+                            <h3>Projektorientiert</h3>
+                            <p>Planung, Koordination und strukturierte Umsetzung.</p>
+                        </article>
+
+                        <article class="highlight-item">
+                            <h3>Prozessorientiert</h3>
+                            <p>Effiziente Abläufe und digitale Arbeitsweisen.</p>
+                        </article>
+
+                        <article class="highlight-item">
+                            <h3>Kommunikationsstark</h3>
+                            <p>Abstimmung mit Kunden, Partnern und Dienstleistern.</p>
+                        </article>
+
+                        <article class="highlight-item">
+                            <h3>Weiterentwicklungsbereit</h3>
+                            <p>Motivation, neue technische Fachgebiete zu erschließen.</p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BERUFSERFAHRUNG -->
+        <section class="section experience" id="erfahrung">
+            <div class="container">
+
+                <div class="experience-header reveal">
+
+                    <div>
+                        <div class="section-label">Beruflicher Werdegang</div>
+
+                        <h2 class="section-heading">
+                            Erfahrung, die
+                            <span class="accent">weiterbringt.</span>
+                        </h2>
+                    </div>
+
+                    <p class="section-description">
+                        Stationen in Projektmanagement, Photovoltaik,
+                        Digitalisierung, Vertrieb und praktischer Installation.
+                    </p>
+
+                </div>
+
+                <div class="timeline">
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-top">
+                            <div>
+                                <h3>Projektadministrator</h3>
+                                <div class="timeline-company">GrunaLabs-IFPI · Solarenergie / Photovoltaik</div>
+                            </div>
+                            <span class="timeline-date">09/2025 – 07/2026</span>
+                        </div>
+
+                        <p>
+                            Administrative Koordination eines Photovoltaikprojekts
+                            mit Fokus auf Organisation, Abstimmung und
+                            Projektdokumentation.
+                        </p>
+
+                        <ul class="timeline-list">
+                            <li>Koordination projektbezogener Aufgaben, Informationen und Dokumente.</li>
+                            <li>Abstimmung mit Kunden und externen Dienstleistern während der Projektplanung und Umsetzung.</li>
+                            <li>Unterstützung bei Kostenkontrolle, Terminplanung und organisatorischen Anforderungen.</li>
+                            <li>Bearbeitung administrativer und operativer Fragestellungen im Projektverlauf.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-top">
+                            <div>
+                                <h3>Projektmanager</h3>
+                                <div class="timeline-company">Apelos Ltd. · Gesundheitswesen</div>
+                            </div>
+                            <span class="timeline-date">12/2023 – 02/2025</span>
+                        </div>
+
+                        <p>
+                            Mitarbeit an Digitalisierungs- und
+                            Effizienzprojekten in Therapiezentren.
+                        </p>
+
+                        <ul class="timeline-list">
+                            <li>Koordination externer Partner und Abstimmung projektbezogener Aufgaben.</li>
+                            <li>Unterstützung bei der Einführung digitaler Systeme.</li>
+                            <li>Schulung von Mitarbeitenden im Umgang mit der elektronischen Patientenakte (ePA).</li>
+                            <li>Technische Unterstützung und Begleitung organisatorischer Veränderungen.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-top">
+                            <div>
+                                <h3>Executive Assistant</h3>
+                                <div class="timeline-company">HORBACH Ltd. · Beratung</div>
+                            </div>
+                            <span class="timeline-date">02/2022 – 12/2023</span>
+                        </div>
+
+                        <p>
+                            Unterstützung administrativer und
+                            kundenbezogener Prozesse im Beratungsumfeld.
+                        </p>
+
+                        <ul class="timeline-list">
+                            <li>Mitwirkung an Kostenkontrolle und Abrechnungsstrategien.</li>
+                            <li>Unterstützung im Finanz- und Kundenbereich.</li>
+                            <li>Mitarbeit bei Marketingaktivitäten und direkter Kundenkommunikation.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-top">
+                            <div>
+                                <h3>Projektkoordinator</h3>
+                                <div class="timeline-company">GP Günter Papenburg Ltd. · Logistik</div>
+                            </div>
+                            <span class="timeline-date">10/2020 – 02/2022</span>
+                        </div>
+
+                        <p>
+                            Koordination logistischer Abläufe und Unterstützung
+                            bei der digitalen Verbesserung betrieblicher Prozesse.
+                        </p>
+
+                        <ul class="timeline-list">
+                            <li>Einsatz digitaler Werkzeuge zur Prozessverbesserung.</li>
+                            <li>Arbeit mit Versandsoftware und prozessbezogenen Informationen.</li>
+                            <li>Abstimmung von Angeboten, Ergebnissen und Softwareanforderungen zwischen Beteiligten.</li>
+                        </ul>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+
+                        <div class="timeline-top">
+                            <div>
+                                <h3>Technik, Vertrieb &amp; Kundenberatung</h3>
+                                <div class="timeline-company">Gebrüder Karasch Haustechnik GmbH · Familienbetrieb · Photovoltaik / Haustechnik</div>
+                            </div>
+                            <span class="timeline-date">Familienbetrieb</span>
+                        </div>
+
+                        <p>
+                            Mitarbeit im Familienunternehmen mit Schwerpunkt auf
+                            Kundenkommunikation, Vertrieb und der praktischen
+                            Umsetzung von Photovoltaikanlagen.
+                        </p>
+
+                        <ul class="timeline-list">
+                            <li>Öffentlichkeitsarbeit, Vertrieb und direkter Kundenkontakt von der ersten Beratung bis zur Inbetriebnahme.</li>
+                            <li>Verständliche Erklärung technischer Lösungen und Ermittlung individueller Kundenbedürfnisse.</li>
+                            <li>Direkte Mitarbeit bei der Montage von Photovoltaikanlagen auf Dächern.</li>
+                            <li>Unterstützung bei Installationsarbeiten im Keller, auch bei Regen und Kälte.</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJEKT- UND THEMENSCHWERPUNKTE -->
+        <section class="section" id="projekte">
+            <div class="container">
+
+                <div class="reveal">
+                    <div class="section-label">Fachliche Schwerpunkte</div>
+
+                    <h2 class="section-heading">
+                        Wissen in
+                        <span class="accent">Wirkung verwandeln.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Die folgenden Schwerpunkte spiegeln Erfahrungen und
+                        Tätigkeitsfelder aus meinem beruflichen Werdegang wider.
+                        Sie sind keine Darstellung eigenständiger Produktlösungen
+                        oder live überwachter Anlagen.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <article class="project-card reveal">
+                        <div class="project-number">01 / ENERGIE</div>
+                        <div class="project-icon" aria-hidden="true">☀</div>
+                        <h3>Photovoltaik &amp; Projektkoordination</h3>
+                        <p>
+                            Administrative Unterstützung bei der Planung und
+                            Umsetzung von Solarprojekten, einschließlich
+                            Dokumentation, Terminabstimmung und Kommunikation
+                            mit Projektbeteiligten.
+                        </p>
+                        <span class="project-tag">Erneuerbare Energien</span>
+                    </article>
+
+                    <article class="project-card reveal reveal-delay-1">
+                        <div class="project-number">02 / DIGITAL</div>
+                        <div class="project-icon" aria-hidden="true">⌘</div>
+                        <h3>Digitalisierung von Arbeitsabläufen</h3>
+                        <p>
+                            Unterstützung bei der Einführung digitaler Systeme,
+                            der Verbesserung administrativer Abläufe und der
+                            strukturierten Nutzung von Informationen.
+                        </p>
+                        <span class="project-tag">Digitale Prozesse</span>
+                    </article>
+
+                    <article class="project-card reveal reveal-delay-2">
+                        <div class="project-number">03 / MANAGEMENT</div>
+                        <div class="project-icon" aria-hidden="true">↗</div>
+                        <h3>Organisation &amp; Prozessoptimierung</h3>
+                        <p>
+                            Koordination verschiedener Beteiligter,
+                            Unterstützung bei Kostenkontrolle und
+                            nachvollziehbare Dokumentation von Aufgaben
+                            und Ergebnissen.
+                        </p>
+                        <span class="project-tag">Projektmanagement</span>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KOMPETENZEN -->
+        <section class="section skills" id="kompetenzen">
+            <div class="container">
+
+                <div class="reveal">
+                    <div class="section-label">Kompetenzprofil</div>
+
+                    <h2 class="section-heading">
+                        Was ich
+                        <span class="accent">einbringe.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Fachliche Erfahrung, organisatorische Fähigkeiten
+                        und eine strukturierte Arbeitsweise als Grundlage
+                        für erfolgreiche Zusammenarbeit.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+
+                    <article class="skill-group reveal">
+                        <h3>Projektmanagement &amp; Organisation</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Projektkoordination</span>
+                            <span class="skill-tag">Prozessoptimierung</span>
+                            <span class="skill-tag">Terminplanung</span>
+                            <span class="skill-tag">Dokumentation</span>
+                            <span class="skill-tag">Aufgabenkoordination</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-group reveal reveal-delay-1">
+                        <h3>Kommunikation &amp; Zusammenarbeit</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Kundenkommunikation</span>
+                            <span class="skill-tag">Vertrieb &amp; Beratung</span>
+                            <span class="skill-tag">Partnerkoordination</span>
+                            <span class="skill-tag">Dienstleisterabstimmung</span>
+                            <span class="skill-tag">Behördenkommunikation</span>
+                            <span class="skill-tag">Mitarbeiterschulung</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-group reveal">
+                        <h3>Administration &amp; Wirtschaft</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Kostenkontrolle</span>
+                            <span class="skill-tag">Abrechnung</span>
+                            <span class="skill-tag">Vertragsunterstützung</span>
+                            <span class="skill-tag">Verwaltungsprozesse</span>
+                            <span class="skill-tag">MS Office</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-group reveal reveal-delay-1">
+                        <h3>Technik &amp; Digitalisierung</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Digitale Workflows</span>
+                            <span class="skill-tag">Softwareeinführung</span>
+                            <span class="skill-tag">Technischer Support</span>
+                            <span class="skill-tag">Versandsoftware</span>
+                            <span class="skill-tag">Photovoltaikprojekte</span>
+                            <span class="skill-tag">PV-Montage</span>
+                            <span class="skill-tag">Installationsarbeiten</span>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SPRACHEN -->
+        <section class="section" id="sprachen">
+            <div class="container">
+
+                <div class="reveal">
+                    <div class="section-label">Internationale Zusammenarbeit</div>
+
+                    <h2 class="section-heading">
+                        Sprachen, die
+                        <span class="accent">verbinden.</span>
+                    </h2>
+
+                    <p class="section-description">
+                        Sprachkenntnisse für die Kommunikation in
+                        unterschiedlichen beruflichen und kulturellen Kontexten.
+                    </p>
+                </div>
+
+                <div class="languages-grid">
+
+                    <article class="language-card reveal">
+                        <h3>Deutsch</h3>
+                        <p>C2 · Muttersprache</p>
+                        <div class="language-level" aria-hidden="true"><span style="width: 100%;"></span></div>
+                    </article>
+
+                    <article class="language-card reveal reveal-delay-1">
+                        <h3>Englisch</h3>
+                        <p>C1 · Fortgeschritten</p>
+                        <div class="language-level" aria-hidden="true"><span style="width: 85%;"></span></div>
+                    </article>
+
+                    <article class="language-card reveal reveal-delay-2">
+                        <h3>Portugiesisch</h3>
+                        <p>B1 · Mittelstufe</p>
+                        <div class="language-level" aria-hidden="true"><span style="width: 55%;"></span></div>
+                    </article>
+
+                    <article class="language-card reveal reveal-delay-3">
+                        <h3>Spanisch</h3>
+                        <p>A2 · Grundkenntnisse</p>
+                        <div class="language-level" aria-hidden="true"><span style="width: 35%;"></span></div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AUSBILDUNG -->
+        <section class="section education" id="ausbildung">
+            <div class="container">
+
+                <div class="reveal">
+                    <div class="section-label">Akademischer Hintergrund</div>
+
+                    <h2 class="section-heading">
+                        Technik und
+                        <span class="accent">Wirtschaft verbinden.</span>
+                    </h2>
+                </div>
+
+                <article class="education-card reveal">
+
+                    <div class="education-icon" aria-hidden="true">⌂</div>
+
+                    <div>
+                        <h3>Bachelor of Science – Wirtschaftsingenieurwesen</h3>
+                        <p>Hochschule Merseburg · Deutschland</p>
+                        <p>
+                            Schwerpunkte: Digitalisierung, Prozessoptimierung,
+                            strategische Entwicklung sowie Analyse und Integration
+                            interdisziplinärer Systeme.
+                        </p>
+                    </div>
+
+                    <span class="education-date">10/2019 – 02/2024</span>
+
+                </article>
+
+            </div>
+        </section>
+
+        <!-- KONTAKT -->
+        <section class="section contact" id="kontakt">
+            <div class="container">
+
+                <div class="contact-panel reveal">
+
+                    <div>
+                        <div class="section-label">Kontakt</div>
+
+                        <h2>
+                            Gemeinsam die nächsten
+                            <span class="accent">Schritte gestalten.</span>
+                        </h2>
+
+                        <p class="contact-intro">
+                            Sie suchen Unterstützung bei der Koordination
+                            von Projekten, der Optimierung von Prozessen
+                            oder im Bereich erneuerbare Energien?
+                            Ich freue mich auf den Austausch.
+                        </p>
+                    </div>
+
+                    <div class="contact-details">
+
+                        <a class="contact-link" href="mailto:paulkarasch@web.de">
+                            <span class="contact-link-icon" aria-hidden="true">✉</span>
+                            <span>
+                                <small>E-Mail</small>
+                                <strong>paulkarasch@web.de</strong>
+                            </span>
+                        </a>
+
+                        <a class="contact-link" href="tel:+4915227712596">
+                            <span class="contact-link-icon" aria-hidden="true">☎</span>
+                            <span>
+                                <small>Telefon</small>
+                                <strong>+49 152 27712596</strong>
+                            </span>
+                        </a>
+
+                        <a class="contact-link" href="https://paulportifoliop.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-link-icon" aria-hidden="true">↗</span>
+                            <span>
+                                <small>Website</small>
+                                <strong>paulportifoliop.netlify.app</strong>
+                            </span>
+                        </a>
+
+                        <div class="contact-link">
+                            <span class="contact-link-icon" aria-hidden="true">⌖</span>
+                            <span>
+                                <small>Standort</small>
+                                <strong>Halle (Saale), Sachsen-Anhalt</strong>
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+
+            <a href="#start" class="logo" aria-label="Paul Karasch – Zurück nach oben">
+                <span class="logo-mark">PK</span>
+                <span>
+                    Paul Karasch
+                    <small>Projektentwicklung</small>
+                </span>
+            </a>
+
+            <p>© <span id="currentYear">2026</span> Paul Karasch. Alle Rechte vorbehalten.</p>
+
+            <div class="footer-links">
+                <a href="mailto:paulkarasch@web.de">Kontakt</a>
+                <a href="#start">Zurück nach oben ↑</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" type="button"
+            aria-label="Zurück nach oben" title="Zurück nach oben">
+        ↑
+    </button>
+
+    <script>
+        (function () {
+            "use strict";
+
+            var navbar = document.getElementById("navbar");
+            var navLinks = document.getElementById("navLinks");
+            var menuToggle = document.getElementById("menuToggle");
+            var progress = document.getElementById("scrollProgress");
+            var backToTop = document.getElementById("backToTop");
+            var yearEl = document.getElementById("currentYear");
+
+            /* Jahr im Footer */
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            /* Mobiles Menü */
+            function setMenu(open) {
+                navLinks.classList.toggle("open", open);
+                document.body.classList.toggle("menu-open", open);
+                menuToggle.setAttribute("aria-expanded", String(open));
+                menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+                menuToggle.textContent = open ? "✕" : "☰";
+            }
+
+            menuToggle.addEventListener("click", function () {
+                setMenu(!navLinks.classList.contains("open"));
+            });
+
+            navLinks.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () { setMenu(false); });
+            });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && navLinks.classList.contains("open")) {
+                    setMenu(false);
+                    menuToggle.focus();
+                }
+            });
+
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 760 && navLinks.classList.contains("open")) setMenu(false);
+            });
+
+            /* Scroll: Fortschrittsbalken, Navbar-Schatten, Back-to-top */
+            var ticking = false;
+
+            function onScroll() {
+                var y = window.scrollY || document.documentElement.scrollTop;
+                var max = document.documentElement.scrollHeight - window.innerHeight;
+                progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+                navbar.classList.toggle("scrolled", y > 20);
+                backToTop.classList.toggle("visible", y > 600);
+                ticking = false;
+            }
+
+            window.addEventListener("scroll", function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(onScroll);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            onScroll();
+
+            backToTop.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            /* Reveal-Animationen */
+            var revealEls = document.querySelectorAll(".reveal");
+
+            if ("IntersectionObserver" in window) {
+                var revealObserver = new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+                revealEls.forEach(function (el) { revealObserver.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add("visible"); });
+            }
+
+            /* Aktiver Menüpunkt */
+            var sections = document.querySelectorAll("main section[id]");
+            var anchors = navLinks.querySelectorAll('a[href^="#"]:not(.nav-cta)');
+
+            if ("IntersectionObserver" in window) {
+                var spy = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        var id = "#" + entry.target.id;
+                        anchors.forEach(function (a) {
+                            var active = a.getAttribute("href") === id;
+                            a.classList.toggle("active", active);
+                            if (active) a.setAttribute("aria-current", "true");
+                            else a.removeAttribute("aria-current");
+                        });
+                    });
+                }, { rootMargin: "-45% 0px -50% 0px" });
+
+                sections.forEach(function (s) { spy.observe(s); });
+            }
+        })();
+    </script>
+
+</body>
+</html>
